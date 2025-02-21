@@ -1,0 +1,164 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px Helvetica Neue, Helvetica, PingFang SC, Tahoma, Arial, sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 30px;
+    background-color: #ccc;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+/* Header */
+.header {
+  margin-bottom: 30px;
+}
+
+.header .header__logo {
+  width: 100%;
+}
+
+.item-bg {
+  background: url(assets/images/item-bg.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.page-menus .page-menus__inner {
+  text-align: center;
+  font-size: 12px;
+  color: #818181;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.page-menus__inner img {
+  width: 50px;
+  display: block;
+  margin: 0 auto 5px;
+}
+
+.page-menus a {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.page-menus a.menu-last {
+  margin-bottom: 0px;
+}
+
+.title-subject {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.title-subject-sub {
+  color: #959595;
+}
+
+.section-content {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.common-title {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.section-box .row {
+  align-items: center;
+}
+
+.section-box__left img {
+  width: 60px;
+  margin: 0 10px;
+}
+
+.section-box__right img {
+  /* width: 70%; */
+}
+
+.section-box__mark {
+  font-size: 14px;
+  color: #A95E24;
+  margin-top: 5px;
+}
+
+.page-hz__inner {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.float-btn {
+  z-index: 20;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  right: 2vw;
+  top: 44%;
+  text-align: center;
+  font-size: 1.6vw;
+}
+
+.float-btn img {
+  width: 72px;
+}
+
+@media screen and (max-width: 990px) {
+  .container {
+    padding: 10px 15px;
+  }
+
+  .page-hz__inner img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .header .container {
+    padding: 0;
+  }
+
+  .section-content {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .section-box__title img {
+    width: 100%;
+  }
+}
