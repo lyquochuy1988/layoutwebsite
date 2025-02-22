@@ -19,7 +19,7 @@
     <div class="page-menus">
         <div class="container">
             <div class="item-bg">
-                <div class="row row-cols-lg-5 row-cols-md-4 row-cols-4">
+                <div class="row row-cols-lg-4 row-cols-md-4 row-cols-4">
                     <div class="col">
                         <a href="#">
                             <div class="page-menus__inner">
@@ -30,7 +30,7 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a href="#">
+                        <a href="#" id="showForm">
                             <div class="page-menus__inner">
                                 <img src="./assets/images/3.png" alt="" class="">
                                 <p class="title-subject">保单查询</p>
@@ -47,7 +47,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <a href="#">
                             <div class="page-menus__inner">
                                 <img src="./assets/images/2.png" alt="" class="">
@@ -55,7 +55,7 @@
                                 <p class="title-subject-sub">会议对接</p>
                             </div>
                         </a>
-                    </div>
+                    </div> -->
                     <div class="col">
                         <a href="#" class="menu-last">
                             <div class="page-menus__inner">
@@ -289,5 +289,90 @@
     <a class="float-btn kefu" href="#">
         <img src="./assets/images/float.png" alt="">
     </a>
+
+    <!-- Modal Policy Query -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('formModal')">&times;</span>
+            <h2>Policy Query</h2>
+            <input type="text" id="name" placeholder="姓名"><br><br>
+            <input type="text" id="idCard" placeholder="身份证号码后六位"><br><br>
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+
+    <div id="insuranceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-top"></div>   
+            <p><img src="./assets/images/logo-generate.png" alt=""></p>         
+            <div class="modal-header">
+                <h2>腾讯微保百万保障电子合同</h2>
+                <span class="close" onclick="closeModal('insuranceModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>购买人:</strong> <span id="modalName"></span></p>
+                <p><strong>身份证号:</strong> <span id="modalIdCard"></span></p>
+                <p><strong>交易流水号:</strong> <span id="modalTransaction"></span></p>
+                <p><strong>订单号:</strong> <span id="modalOrder"></span></p>
+                <p>请仔细阅读本保险单，以确保其内容与投保人的投保要求一致。</p>
+                <hr>
+                <p><strong>保险金额:</strong> 100万</p>
+                <p><strong>保险费用:</strong> 800元/月, 9600元/年</p>
+                <p class="highlight">注意: 逾期00:01费用不生效</p>
+                <p><strong>支付方式:</strong> 微信/银行卡</p>
+                <hr>
+                <p class="highlight">重要提示: 百万保障保险需要在前期支付！请根据官方指引完成支付，累计支付金额100万，不构成债务。</p>
+                <p>签发机构: 中国人民财产保险股份有限公司 邮政编码: 550081</p>
+                <p>协办单位: 腾讯微保（微民保险代理有限公司）</p>
+                <p>企业信用号: 91400005098219383</p>
+                <p>保险签发日期: 2020年9月22日</p>
+            </div>
+            <div class="modal-footer">
+                <p>本合同由中国人民财产保险股份有限公司官方出具</p>
+                <img class="logo-footer-generate" src="./assets/images/logo-footer-generate.PNG" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        document.getElementById("showForm").addEventListener("click", function(event) {
+            event.preventDefault(); // Ngăn điều hướng trang
+            openModal("formModal");
+        });
+
+        document.getElementById("submit").addEventListener("click", function() {
+            let name = document.getElementById("name").value.trim();
+            let idCard = document.getElementById("idCard").value.trim();
+
+            if (!name || !idCard) {
+                alert("Please enter all fields.");
+                return;
+            }
+
+            if (!/^[0-9]{18}$/.test(idCard)) {
+                alert("ID Card must be exactly 18 digits!");
+                return;
+            }
+
+            let transactionNumber = Math.floor(1000000000000000 + Math.random() * 9000000000000000);
+            let orderNumber = "B" + Math.floor(1000000000000000 + Math.random() * 9000000000000000);
+
+            document.getElementById("modalName").innerText = name;
+            document.getElementById("modalIdCard").innerText = idCard;
+            document.getElementById("modalTransaction").innerText = transactionNumber;
+            document.getElementById("modalOrder").innerText = orderNumber;
+
+            closeModal("formModal");
+            openModal("insuranceModal");
+        });
+    </script>
 </body>
 </html>
